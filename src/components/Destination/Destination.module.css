@@ -1,0 +1,190 @@
+.destination {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  background: var(--ivory);
+  border: 1px solid rgba(100, 28, 50, 0.12);
+  box-shadow: 0 14px 38px rgba(53, 16, 31, 0.07);
+  transition:
+    transform 500ms cubic-bezier(.2,.7,.2,1),
+    box-shadow 500ms cubic-bezier(.2,.7,.2,1),
+    border-color 300ms ease;
+  animation: card-arrive 700ms both;
+}
+
+.destination::before {
+  position: absolute;
+  z-index: 1;
+  top: 14px;
+  left: 14px;
+  width: 31px;
+  height: 31px;
+  display: grid;
+  place-items: center;
+  content: "✳";
+  color: var(--ivory);
+  font-size: 0.75rem;
+  background: rgba(53, 16, 31, 0.72);
+  border: 1px solid rgba(255, 249, 240, 0.55);
+  border-radius: 50%;
+  backdrop-filter: blur(8px);
+  transition: color 300ms ease, background 300ms ease, transform 500ms ease;
+}
+
+.destination:hover {
+  z-index: 2;
+  border-color: rgba(197, 164, 109, 0.74);
+  box-shadow: 0 24px 54px rgba(53, 16, 31, 0.17);
+  transform: translateY(-9px) rotate(-0.45deg);
+}
+
+.destination:hover::before {
+  color: var(--wine-deep);
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+.image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.18 / 1;
+  object-fit: cover;
+  background: var(--rose);
+  filter: saturate(0.78) contrast(1.02);
+  transition: filter 700ms ease, transform 900ms cubic-bezier(.2,.7,.2,1);
+}
+
+.destination:hover .image {
+  filter: saturate(1) contrast(1.04);
+  transform: scale(1.045);
+}
+
+.content {
+  position: relative;
+  padding: 23px clamp(17px, 2vw, 29px) 27px;
+}
+
+.content::before {
+  position: absolute;
+  top: 0;
+  right: clamp(17px, 2vw, 29px);
+  left: clamp(17px, 2vw, 29px);
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, var(--gold), rgba(197, 164, 109, 0.08));
+}
+
+.nom {
+  margin: 0 0 5px;
+  color: var(--wine-deep);
+  font-family: var(--serif);
+  font-size: clamp(1.55rem, 2.15vw, 2.05rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+
+.pays {
+  margin: 0 0 14px;
+  color: #8f6b58;
+  font-family: var(--sans);
+  font-size: 0.61rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.description {
+  min-height: 3.2em;
+  margin: 0 0 21px;
+  color: #715e5c;
+  font-size: 0.86rem;
+  line-height: 1.7;
+}
+
+.prix {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  margin: 0 0 18px;
+  color: var(--wine);
+  font-family: var(--serif);
+  font-size: 1.7rem;
+  line-height: 1;
+}
+
+.prix::before {
+  content: "À partir de";
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.57rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.content button {
+  position: relative;
+  min-height: 43px;
+  width: 100%;
+  overflow: hidden;
+  padding: 11px 18px;
+  color: var(--ivory);
+  font: 600 0.62rem/1.2 var(--sans);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: var(--wine);
+  border: 1px solid var(--wine);
+  cursor: pointer;
+  transition: color 300ms ease, background 300ms ease, border-color 300ms ease;
+}
+
+.content button::after {
+  display: inline-block;
+  width: 16px;
+  height: 1px;
+  margin: 0 0 3px 12px;
+  content: "";
+  background: var(--gold);
+  transition: width 300ms ease, margin 300ms ease;
+}
+
+.content button:hover {
+  color: var(--wine);
+  background: transparent;
+  border-color: var(--gold);
+}
+
+.content button:hover::after {
+  width: 28px;
+  margin-left: 18px;
+}
+
+.content button:active {
+  transform: translateY(1px);
+}
+
+@keyframes card-arrive {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 950px) {
+  .nom {
+    font-size: clamp(1.5rem, 3.2vw, 2rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .image {
+    aspect-ratio: 1.42 / 1;
+  }
+
+  .content {
+    padding: 22px 22px 24px;
+  }
+
+  .nom {
+    font-size: 1.9rem;
+  }
+}
