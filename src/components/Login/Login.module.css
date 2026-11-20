@@ -1,0 +1,103 @@
+
+/* Importation de la police */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F5EFE6;
+}
+
+/* Conteneur principal */
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F5EFE6;
+}
+
+/* Formulaire */
+form {
+    width: 380px;
+    padding: 40px;
+    background-color: #FFF9F0;
+    border-radius: 18px;
+    box-shadow: 0 8px 30px rgba(88, 24, 42, 0.15);
+    border: 1px solid #E8D8C8;
+}
+
+/* Titre */
+h2 {
+    text-align: center;
+    color: #800020;
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #581824;
+    font-weight: 600;
+}
+
+/* Champs de saisie */
+input {
+    width: 100%;
+    padding: 13px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #D8C3B5;
+    border-radius: 9px;
+    background-color: #FFFFFF;
+    color: #3B1B22;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #800020;
+    box-shadow: 0 0 0 3px rgba(128, 0, 32, 0.12);
+}
+
+/* Bouton */
+button {
+    width: 100%;
+    padding: 13px;
+    background-color: #800020;
+    color: #FFF9F0;
+    border: none;
+    border-radius: 9px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #5E0018;
+    transform: translateY(-2px);
+}
+
+/* Messages d'erreur */
+p {
+    color: #B3261E;
+    font-size: 12px;
+    margin-top: -15px;
+    margin-bottom: 15px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    form {
+        width: 90%;
+        padding: 25px;
+    }
+}
