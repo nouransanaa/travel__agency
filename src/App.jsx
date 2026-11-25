@@ -2,19 +2,26 @@ import"./App.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Destinations from "./components/Destinations/Destinations";
-import Exemple from"./components/Exemple/Exemple";
 import Login from "./components/Login/Login";
+import Apropos from "./components/Apropos/Apropos";
+import Accueil from "./components/Accueil/Accueil";
+import Reservation from "./components/Reservation/Reservation";
+import { BrowserRouter,Routes,Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="app">
+    <div className="App">
+    <BrowserRouter>
     <Header/>
-    <main>
-      <Destinations/>
-      <Login/>
-    </main>
-    <Exemple/>
+    <Routes>
+      <Route path="/" element={<Accueil/>} />
+      <Route path="/apropos" element={<Apropos/>} />
+      <Route path="/login" element={<Login/>} />
+      <Route path="/destinations" element={<Destinations/>} />
+      <Route path="/reservation" element={<Reservation/>} />
+    </Routes>
     <Footer/>
+    </BrowserRouter>
     
     </div>
   );

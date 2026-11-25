@@ -1,22 +1,39 @@
 import { useState } from "react";
 import styles from "./Reservation.module.css";
 
- function Reservation (){
+function Reservation() {
     const[nom, setNom]= useState("");
     const[email, setEmail]= useState("");
     const[telephone, setTelephone]= useState("");
 
     const[reservation, setReservation] = useState (null);
     const[erreurs, setErreurs] = useState ({});
-    const[showPopup, setshowPopup] = useState (false);
+    const [showPopup, setShowPopup] = useState(false);
 
     function effacerErreur(champ){
         setErreurs((prev) => 
         {
             const nouvellesErreurs = { ... prev};
-            delete nouvelleErreur[champ];
-            return nouvelleErreur;
+            delete nouvellesErreurs[champ];
+            return nouvellesErreurs;
         })
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        const nouvellesErreurs = {};
+
+        if (!nom.trim()) nouvellesErreurs.nom = "Veuillez entrer votre nom.";
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            nouvellesErreurs.email = "Veuillez entrer une adresse email valide.";
+        }
+        if (!telephone.trim()) nouvellesErreurs.telephone = "Veuillez entrer votre téléphone.";
+
+        setErreurs(nouvellesErreurs);
+        if (Object.keys(nouvellesErreurs).length === 0) {
+            setReservation({ nom, email, telephone });
+            setShowPopup(true);
+        }
     }
     
 
@@ -30,7 +47,7 @@ import styles from "./Reservation.module.css";
                     <label>Nom et prénom :</label>
                     <input
                     type="text"
-                    className={erreur.nom ? styles.inputError :""}
+                    className={erreurs.nom ? styles.inputError : ""}
                     value={nom}
                     onChange={(e) => {
                         setNom(e.target.value);
@@ -38,9 +55,9 @@ import styles from "./Reservation.module.css";
                     }}
                     placeholder="Votre nom et prénom"
                     />
-                    {erreur.nom && (
+                    {erreurs.nom && (
                         <span className={styles.errorMessage}>
-                            {erreur.nom}
+                            {erreurs.nom}
                         </span>
                     )
                     }
@@ -48,7 +65,7 @@ import styles from "./Reservation.module.css";
                     <label>email:</label>
                     <input
                     type="text"
-                    className={erreur.email ? styles.inputError :""}
+                    className={erreurs.email ? styles.inputError : ""}
                     value={email}
                     onChange={(e) => {
                         setEmail(e.target.value);
@@ -56,9 +73,9 @@ import styles from "./Reservation.module.css";
                     }}
                     placeholder="Votre email"
                     />
-                    {erreur.email && (
+                    {erreurs.email && (
                         <span className={styles.errorMessage}>
-                            {erreur.email}
+                            {erreurs.email}
                         </span>
                     )
                     }
@@ -66,7 +83,7 @@ import styles from "./Reservation.module.css";
                     <label>Telephone:</label>
                     <input
                     type="text"
-                    className={erreur.telephone ? styles.inputError :""}
+                    className={erreurs.telephone ? styles.inputError : ""}
                     value={telephone}
                     onChange={(e) => {
                         setTelephone(e.target.value);
@@ -74,9 +91,9 @@ import styles from "./Reservation.module.css";
                     }}
                     placeholder="Votre telephone"
                     />
-                    {erreur.telephone && (
+                    {erreurs.telephone && (
                         <span className={styles.errorMessage}>
-                            {erreur.telephone}
+                            {erreurs.telephone}
                         </span>
                     )
                     }
@@ -85,8 +102,14 @@ import styles from "./Reservation.module.css";
 
                 </div>
 
+                <button type="submit">Confirmer la réservation</button>
             </form>
+            {showPopup && reservation && (
+                <p role="status">Merci {reservation.nom}, votre demande de réservation est enregistrée.</p>
+            )}
 
         </section>
     )
- }
+}
+
+export default Reservation;

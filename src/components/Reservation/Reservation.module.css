@@ -1,0 +1,112 @@
+
+.container {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    font-family: Arial, sans-serif;
+}
+
+.container h2 {
+    text-align: center;
+    color: #173b63;
+    font-size: 28px;
+    margin-bottom: 35px;
+    font-weight: 700;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.formGroup label {
+    color: #263445;
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 12px;
+}
+
+.formGroup input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 16px;
+    border: 1px solid #d6deea;
+    border-radius: 9px;
+    outline: none;
+    font-size: 15px;
+    color: #263445;
+    background-color: #f9fbfd;
+    transition: all 0.3s ease;
+}
+
+.formGroup input:focus {
+    border-color: #2878c8;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(40, 120, 200, 0.12);
+}
+
+.formGroup input::placeholder {
+    color: #a0aaba;
+}
+
+.inputError {
+    border-color: #e53935 !important;
+    background-color: #fff8f8 !important;
+}
+
+.errorMessage {
+    color: #e53935;
+    font-size: 13px;
+    margin-top: -5px;
+}
+
+.container button {
+    width: 100%;
+    margin-top: 30px;
+    padding: 15px;
+    border: none;
+    border-radius: 9px;
+    background-color: #173b63;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.container button:hover {
+    background-color: #2878c8;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(40, 120, 200, 0.2);
+}
+
+.container button:active {
+    transform: translateY(0);
+}
+
+.container p[role="status"] {
+    margin-top: 25px;
+    padding: 15px;
+    border-radius: 9px;
+    background-color: #e8f7ed;
+    color: #218447;
+    text-align: center;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 650px) {
+    .container {
+        margin: 30px 15px;
+        padding: 25px 20px;
+    }
+
+    .container h2 {
+        font-size: 23px;
+    }
+}
